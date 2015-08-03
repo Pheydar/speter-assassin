@@ -85,6 +85,9 @@ namespace Illthinkofthenamelater
             }
 
             //Controls_end
+
+            //CM
+            //COMBAT_START
         }
 
         public void Draw(SpriteBatch spriteBatch)
