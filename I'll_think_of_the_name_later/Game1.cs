@@ -18,6 +18,7 @@ namespace Illthinkofthenamelater
 
         Player m_player;
 
+        //sup sluz
         public const int screenSizeX = 1280;
         public const int screenSizeY = 720;
  
