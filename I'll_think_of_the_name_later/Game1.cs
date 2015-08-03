@@ -19,6 +19,7 @@ namespace Illthinkofthenamelater
         Player m_player;
 
         //sup sluz
+        //oh sweet as slus cus gg no re big d sea hk your gay
         public const int screenSizeX = 1280;
         public const int screenSizeY = 720;
  
