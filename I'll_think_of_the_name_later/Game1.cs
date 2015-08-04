@@ -22,7 +22,8 @@ namespace Illthinkofthenamelater
         //oh sweet as slus cus gg no re big d sea hk your gay
         public const int screenSizeX = 1280;
         public const int screenSizeY = 720;
- 
+
+        private Vector2 cursorPos;
         
 
         //Textures_Start
@@ -30,7 +31,8 @@ namespace Illthinkofthenamelater
         //Player sprite
         Texture2D playerTex;
         Texture2D bulletTex;
-        
+        Texture2D crosshairTex;
+            
         //Textures_End
 
         public Game1()
@@ -65,6 +67,7 @@ namespace Illthinkofthenamelater
             spriteBatch = new SpriteBatch(GraphicsDevice);
             playerTex = Content.Load<Texture2D>("player.png");
             bulletTex = Content.Load<Texture2D>("bulletTest");
+            crosshairTex = Content.Load<Texture2D>("crosshair1");
 
             m_player = new Player(new Vector2(80, 80), new Vector2(playerTex.Width, playerTex.Height), 10f, 10, playerTex, 30, 2, bulletTex,
                                     Color.White);
@@ -90,6 +93,7 @@ namespace Illthinkofthenamelater
                 Exit();
 
             m_player.Update(gameTime);
+            cursorPos = new Vector2(Mouse.GetState().X - 24, Mouse.GetState().Y - 16);
 
             base.Update(gameTime);
         }
@@ -103,6 +107,8 @@ namespace Illthinkofthenamelater
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+
+            spriteBatch.Draw(crosshairTex, cursorPos, Color.White);
 
             m_player.Draw(spriteBatch);
 

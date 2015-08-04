@@ -27,7 +27,7 @@ namespace Illthinkofthenamelater
         Texture2D m_bulletTexture;
         Color m_colour;
         public int bulletdmg = 25;
-        public int rateOfFire = 250;
+        public int rateOfFire = 150;
         int bulletTimer;
         Vector2 mousePos;
 
@@ -193,7 +193,7 @@ namespace Illthinkofthenamelater
         public void Shoot()
         {
 
-            Bullet newBullet = new Bullet((m_position - new Vector2(m_size.X, 0) / 2) + m_direction * 25.0f, m_direction, new Vector2(5, 10), mousePos.X, mousePos.Y, 15, m_colour, m_bulletTexture, bulletdmg, 1920);
+            Bullet newBullet = new Bullet((m_position - new Vector2(m_size.X, 0) / 2) + m_direction * 25.0f, m_direction, new Vector2(5, 10), mousePos.X, mousePos.Y, 32, m_colour, m_bulletTexture, bulletdmg, 1920);
             playerBulletList.Add(newBullet);
         }
 
