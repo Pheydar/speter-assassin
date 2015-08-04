@@ -38,6 +38,9 @@ namespace Illthinkofthenamelater
         int attackMoveTimer;
         bool hasWeaponSpawned = false;
 
+        float mouseX;
+        float mouseY;
+
         Camera cam = new Camera();
 
         public List<MeleeWeapon> weaponList = new List<MeleeWeapon>();
@@ -67,6 +70,9 @@ namespace Illthinkofthenamelater
 
         public void Update(GameTime m_gameTime)
         {
+
+            
+
             playerControls();
             FindDeadBullets();
             foreach (Bullet bullet in playerBulletList)
@@ -159,9 +165,8 @@ namespace Illthinkofthenamelater
 
         public void playerControls ()
         {
-            float mouseX = Mouse.GetState().X + cam._pos.X ;
-            float mouseY = Mouse.GetState().Y + cam._pos.Y ;
-
+            float mouseX = Mouse.GetState().X + cam._pos.X /2;
+            float mouseY = Mouse.GetState().Y + cam._pos.Y/2 ;
             mousePos = new Vector2(mouseX, mouseY);
             Vector2 direction = mousePos - m_position;
             direction.Normalize();
@@ -200,6 +205,11 @@ namespace Illthinkofthenamelater
             {
                 Reload();
             }
+        }
+
+        public Vector2 GiveMouseCoords()
+        {
+            return mousePos;
         }
 
         public void FindDeadBullets()

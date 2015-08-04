@@ -98,6 +98,11 @@ namespace Illthinkofthenamelater
                 Exit();
 
             m_player.Update(gameTime);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            {
+                cam._pos.X += 1;
+            }
     
             cursorPos = new Vector2(Mouse.GetState().X - 24, Mouse.GetState().Y - 16);
 
@@ -118,7 +123,7 @@ namespace Illthinkofthenamelater
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            cam.Pos = new Vector2((float)m_player.GetPlayerPos().X, (float)m_player.GetPlayerPos().Y);
+            cam.Pos = new Vector2((float)m_player.GetPlayerPos().X / 2, (float)m_player.GetPlayerPos().Y / 2);
 
             spriteBatch.Begin(SpriteSortMode.BackToFront,
                         BlendState.AlphaBlend,
@@ -128,11 +133,17 @@ namespace Illthinkofthenamelater
                         null,
                         cam.get_transformation(GraphicsDevice));
 
-            spriteBatch.Draw(crosshairTex, drawCursor, Color.White);
 
-            m_player.Draw(spriteBatch);
+            
 
             spriteBatch.Draw(background, new Rectangle(0, 0, screenSizeX, screenSizeY), Color.White);
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+
+            m_player.Draw(spriteBatch);
+            spriteBatch.Draw(crosshairTex, m_player.GiveMouseCoords(), Color.White);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
