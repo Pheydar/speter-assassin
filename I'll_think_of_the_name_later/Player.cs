@@ -31,6 +31,15 @@ namespace Illthinkofthenamelater
         int bulletTimer;
         Vector2 mousePos;
         int deleteBulletTime;
+        bool attackButtonDown = false;
+        bool timeToDieWep = false;
+        bool attackCantMove = false;
+        int attackTimer;
+        int attackMoveTimer;
+        bool hasWeaponSpawned = false;
+
+        public List<MeleeWeapon> weaponList = new List<MeleeWeapon>();
+        MeleeWeapon newWeapon;
 
         public List<Bullet> playerBulletList = new List<Bullet>();
 
