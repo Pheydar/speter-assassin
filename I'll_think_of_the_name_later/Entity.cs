@@ -12,6 +12,7 @@ namespace Illthinkofthenamelater
     {
         protected Vector2 m_position;
         protected Vector2 m_size;
+        protected Vector2 m_direction;
 
         public Rectangle GetRectangle()
         {

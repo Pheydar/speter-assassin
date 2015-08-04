@@ -29,6 +29,7 @@ namespace Illthinkofthenamelater
 
         //Player sprite
         Texture2D playerTex;
+        Texture2D bulletTex;
         
         //Textures_End
 
@@ -63,8 +64,10 @@ namespace Illthinkofthenamelater
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             playerTex = Content.Load<Texture2D>("player.png");
+            bulletTex = Content.Load<Texture2D>("bulletTest");
 
-            m_player = new Player(new Vector2(80, 80), new Vector2(playerTex.Width, playerTex.Height), 10f, 10, playerTex);
+            m_player = new Player(new Vector2(80, 80), new Vector2(playerTex.Width, playerTex.Height), 10f, 10, playerTex, 30, 2, bulletTex,
+                                    Color.White);
         }
 
         /// <summary>
