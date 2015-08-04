@@ -14,7 +14,9 @@ namespace Illthinkofthenamelater
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        SpriteBatch spriteBatch;       
+        Camera cam = new Camera();
+ 
 
         Player m_player;
 
@@ -95,6 +97,8 @@ namespace Illthinkofthenamelater
             m_player.Update(gameTime);
             cursorPos = new Vector2(Mouse.GetState().X - 24, Mouse.GetState().Y - 16);
 
+            
+
             base.Update(gameTime);
         }
 
@@ -106,7 +110,15 @@ namespace Illthinkofthenamelater
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            cam.Pos = new Vector2(m_player.m, 200.0f);
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront,
+                        BlendState.AlphaBlend,
+                        null,
+                        null,
+                        null,
+                        null,
+                        cam.get_transformation(GraphicsDevice));
 
             spriteBatch.Draw(crosshairTex, cursorPos, Color.White);
 
