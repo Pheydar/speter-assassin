@@ -30,6 +30,7 @@ namespace Illthinkofthenamelater
         public int rateOfFire = 150;
         int bulletTimer;
         Vector2 mousePos;
+        int deleteBulletTime;
 
         public List<Bullet> playerBulletList = new List<Bullet>();
 
@@ -51,6 +52,7 @@ namespace Illthinkofthenamelater
         public void Update(GameTime m_gameTime)
         {
             playerControls();
+            FindDeadBullets();
             foreach (Bullet bullet in playerBulletList)
             {
                 bullet.Update(m_gameTime, m_isPlaying);
@@ -73,6 +75,15 @@ namespace Illthinkofthenamelater
                 reloadTime = 588;
             }
 
+            foreach (Bullet newBullet in playerBulletList)
+            {
+                deleteBulletTime += m_gameTime.ElapsedGameTime.Milliseconds;
+                if (deleteBulletTime >= 200)
+                {
+                    newBullet.m_bIsAlive = false;
+                }
+                deleteBulletTime = 0;
+            }
             //m_position.X += m_hAcceleration;
             /*m_position.Y += m_vAcceleration;
 
@@ -172,6 +183,17 @@ namespace Illthinkofthenamelater
             if (Keyboard.GetState().IsKeyDown(Keys.R) && m_isPlaying == true)
             {
                 Reload();
+            }
+        }
+
+        public void FindDeadBullets()
+        {
+            for (int i = 0; i < playerBulletList.Count; ++i)
+            {
+                if (!playerBulletList[i].m_bIsAlive)
+                {
+                    playerBulletList.Remove(playerBulletList[i]);
+                }
             }
         }
 
