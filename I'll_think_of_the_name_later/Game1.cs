@@ -26,6 +26,7 @@ namespace Illthinkofthenamelater
         public const int screenSizeY = 720;
 
         private Vector2 cursorPos;
+        private Vector2 drawCursor;
         
 
         //Textures_Start
@@ -97,9 +98,13 @@ namespace Illthinkofthenamelater
                 Exit();
 
             m_player.Update(gameTime);
+    
             cursorPos = new Vector2(Mouse.GetState().X - 24, Mouse.GetState().Y - 16);
 
-            
+            float relativeMouseX = cursorPos.X + cam._pos.X;
+            float relativeMouseY = cursorPos.Y + cam._pos.Y;
+
+            drawCursor = new Vector2(relativeMouseX, relativeMouseY);
 
             base.Update(gameTime);
         }
@@ -123,7 +128,7 @@ namespace Illthinkofthenamelater
                         null,
                         cam.get_transformation(GraphicsDevice));
 
-            spriteBatch.Draw(crosshairTex, cursorPos, Color.White);
+            spriteBatch.Draw(crosshairTex, drawCursor, Color.White);
 
             m_player.Draw(spriteBatch);
 
