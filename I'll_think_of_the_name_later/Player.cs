@@ -38,6 +38,8 @@ namespace Illthinkofthenamelater
         int attackMoveTimer;
         bool hasWeaponSpawned = false;
 
+        Camera cam = new Camera();
+
         public List<MeleeWeapon> weaponList = new List<MeleeWeapon>();
         MeleeWeapon newWeapon;
 
@@ -157,8 +159,8 @@ namespace Illthinkofthenamelater
 
         public void playerControls ()
         {
-            float mouseX = Mouse.GetState().X;
-            float mouseY = Mouse.GetState().Y;
+            float mouseX = Mouse.GetState().X + cam._pos.X ;
+            float mouseY = Mouse.GetState().Y + cam._pos.Y ;
 
             mousePos = new Vector2(mouseX, mouseY);
             Vector2 direction = mousePos - m_position;
