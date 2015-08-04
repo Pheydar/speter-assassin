@@ -34,6 +34,7 @@ namespace Illthinkofthenamelater
         Texture2D playerTex;
         Texture2D bulletTex;
         Texture2D crosshairTex;
+        Texture2D background;
             
         //Textures_End
 
@@ -70,6 +71,7 @@ namespace Illthinkofthenamelater
             playerTex = Content.Load<Texture2D>("player.png");
             bulletTex = Content.Load<Texture2D>("bulletTest");
             crosshairTex = Content.Load<Texture2D>("crosshair1");
+            background = Content.Load<Texture2D>("$MAP_PlaceTogether");
 
             m_player = new Player(new Vector2(80, 80), new Vector2(playerTex.Width, playerTex.Height), 10f, 10, playerTex, 30, 2, bulletTex,
                                     Color.White);
@@ -110,6 +112,7 @@ namespace Illthinkofthenamelater
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+
             cam.Pos = new Vector2((float)m_player.GetPlayerPos().X, (float)m_player.GetPlayerPos().Y);
 
             spriteBatch.Begin(SpriteSortMode.BackToFront,
@@ -124,6 +127,7 @@ namespace Illthinkofthenamelater
 
             m_player.Draw(spriteBatch);
 
+            spriteBatch.Draw(background, new Rectangle(0, 0, screenSizeX, screenSizeY), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
