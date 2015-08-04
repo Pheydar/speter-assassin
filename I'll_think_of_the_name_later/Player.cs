@@ -58,6 +58,11 @@ namespace Illthinkofthenamelater
             m_colour = a_colour;
         }
 
+        public Vector2 GetPlayerPos()
+        {
+            return m_position;
+        }
+
         public void Update(GameTime m_gameTime)
         {
             playerControls();

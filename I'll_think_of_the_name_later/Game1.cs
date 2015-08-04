@@ -110,7 +110,7 @@ namespace Illthinkofthenamelater
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            cam.Pos = new Vector2(m_player.m, 200.0f);
+            cam.Pos = new Vector2((float)m_player.GetPlayerPos().X, (float)m_player.GetPlayerPos().Y);
 
             spriteBatch.Begin(SpriteSortMode.BackToFront,
                         BlendState.AlphaBlend,
